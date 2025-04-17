@@ -1,0 +1,147 @@
+{
+    "questions": [
+      {
+        "id": 1,
+        "category": "coding",
+        "question": "What does HTML stand for?",
+        "options": ["Hyper Text Markup Language", "High Text Machine Language", "Hyper Tabular Markup Language", "None of these"]
+      },
+      {
+        "id": 2,
+        "category": "history",
+        "question": "Who was the first President of the United States?",
+        "options": ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"]
+      },
+      {
+        "id": 3,
+        "category": "movies",
+        "question": "In which movie did Leonardo DiCaprio win his first Oscar?",
+        "options": ["Titanic", "The Revenant", "Inception", "The Wolf of Wall Street"]
+      },
+      {
+        "id": 4,
+        "category": "general",
+        "question": "What is the capital of France?",
+        "options": ["Paris", "Berlin", "Rome", "Madrid"]
+      },
+      {
+        "id": 5,
+        "category": "coding",
+        "question": "Which of the following is not a programming language?",
+        "options": ["Python", "HTML", "Java", "C++"]
+      },
+      {
+        "id": 6,
+        "category": "history",
+        "question": "When did World War II end?",
+        "options": ["1945", "1939", "1942", "1944"]
+      },
+      {
+        "id": 7,
+        "category": "movies",
+        "question": "Which movie has the highest box office collection as of 2023?",
+        "options": ["Avatar", "Avengers: Endgame", "Titanic", "Spider-Man: No Way Home"]
+      },
+      {
+        "id": 8,
+        "category": "general",
+        "question": "Which planet is known as the Red Planet?",
+        "options": ["Mars", "Venus", "Jupiter", "Mercury"]
+      },
+      {
+        "id": 9,
+        "category": "coding",
+        "question": "What is the output of 2 + '2' in JavaScript?",
+        "options": ["22", "4", "NaN", "undefined"]
+      },
+      {
+        "id": 10,
+        "category": "history",
+        "question": "Who discovered gravity?",
+        "options": ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"]
+      },
+      {
+        "id": 11,
+        "category": "movies",
+        "question": "Which movie features the quote, “I’ll be back”?",
+        "options": ["Terminator", "Predator", "Rambo", "Die Hard"]
+      },
+      {
+        "id": 12,
+        "category": "general",
+        "question": "How many continents are there?",
+        "options": ["7", "6", "5", "8"]
+      },
+      {
+        "id": 13,
+        "category": "coding",
+        "question": "What is a correct syntax to output 'Hello World' in Python?",
+        "options": ["print('Hello World')", "echo 'Hello World'", "console.log('Hello World')", "printf('Hello World')"]
+      },
+      {
+        "id": 14,
+        "category": "history",
+        "question": "Who was the Mughal emperor during the Battle of Plassey?",
+        "options": ["Shah Alam II", "Aurangzeb", "Akbar", "Bahadur Shah Zafar"]
+      },
+      {
+        "id": 15,
+        "category": "movies",
+        "question": "Who directed 'Inception'?",
+        "options": ["Christopher Nolan", "Steven Spielberg", "James Cameron", "Quentin Tarantino"]
+      },
+      {
+        "id": 16,
+        "category": "general",
+        "question": "Which is the longest river in the world?",
+        "options": ["Nile", "Amazon", "Yangtze", "Ganges"]
+      },
+      {
+        "id": 17,
+        "category": "coding",
+        "question": "What does CSS stand for?",
+        "options": ["Cascading Style Sheets", "Computer Style Sheet", "Creative Style Sheet", "Colorful Style Sheet"]
+      },
+      {
+        "id": 18,
+        "category": "history",
+        "question": "Which country gifted the Statue of Liberty to the USA?",
+        "options": ["France", "England", "Germany", "Canada"]
+      },
+      {
+        "id": 19,
+        "category": "movies",
+        "question": "Which Indian film was nominated for an Oscar in 2023?",
+        "options": ["RRR", "Kantara", "Pushpa", "Bahubali 2"]
+      },
+      {
+        "id": 20,
+        "category": "general",
+        "question": "Which element has the chemical symbol ‘O’?",
+        "options": ["Oxygen", "Gold", "Osmium", "Oxide"]
+      } 
+    ],
+    "answers": {
+      "1": "Hyper Text Markup Language",
+      "2": "George Washington",
+      "3": "The Revenant",
+      "4": "Paris",
+      "5": "HTML",
+      "6": "1945",
+      "7": "Avatar",
+      "8": "Mars",
+      "9": "22",
+      "10": "Isaac Newton",
+      "11": "Terminator",
+      "12": "7",
+      "13": "print('Hello World')",
+      "14": "Shah Alam II",
+      "15": "Christopher Nolan",
+      "16": "Nile",
+      "17": "Cascading Style Sheets",
+      "18": "France",
+      "19": "RRR",
+      "20": "Oxygen"
+    }
+  }
+  
