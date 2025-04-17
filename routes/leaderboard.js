@@ -3,7 +3,7 @@ import Participant from '../models/Participant.js';
 
 const getLeaderboard = async (req, res) => {
   try {
-    const leaderboard = await Participant.find()
+    const leaderboard = await Participant.find({participated : true})
       .sort({ score: -1, submissionTime: 1 }) 
      
 
