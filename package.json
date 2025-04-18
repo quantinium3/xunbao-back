@@ -2,13 +2,8 @@
   "name": "xunbao-back",
   "private": true,
   "type": "module",
-  "main": "dist/server.js",
   "scripts": {
-    "test": "jest",
-    "bunrun": "bun run src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js",
-    "dev": "ts-node src/server.ts"
+    "start": "bun run src/server.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
