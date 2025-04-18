@@ -1,38 +1,25 @@
 {
-<<<<<<< HEAD
-  "name": "nexus-back",
+  "name": "xunbao-back",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "nodemon --watch server.js --exec bun server.js",
-    "start": "bun start"
+    "start": "bun run server.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "helmet": "^8.1.0",
     "mongoose": "^8.13.2",
-    "nodemon": "^3.1.9"
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/morgan": "^1.9.9"
   },
   "peerDependencies": {
     "typescript": "^5"
   }
 }
-=======
-  "name": "xunbao-back",
-  "version": "1.0.0",
-  "type": "module",
-  "main": "src/index.ts",
-  "scripts": {
-    "dev": "bun --watch server.ts"
-  },
-  "dependencies": {
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "mongoose": "^8.13.2"
-  }
-}
->>>>>>> c574f47 (register done)

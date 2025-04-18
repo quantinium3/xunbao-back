@@ -1,20 +1,53 @@
-// src/index.ts
 import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./db/db";
 import userRoutes from "./routes/user.routes";
+import helmet from "helmet";
+import morgan from "morgan";
+import { errorHandler, notFound } from "./utils/errorMiddleware";
 
 dotenv.config();
 
 const app = express();
+app.use(helmet());
+app.use(
+    cors({
+        origin: process.env.FRONTEND_URL,
+        credentials: true,
+    })
+);
+if (process.env.NODE_ENV === "development") {
+    app.use(morgan("dev"));
+}
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Mount routes
-app.use("/api/users", userRoutes); // <-- All routes in userRoutes are now prefixed with /api/users
+app.get("/api/health", (req, res) => {
+    res.status(200).json({ status: "UP" });
+});
 
-connectDB().then(() => {
-  const port = Number(process.env.PORT) || 8000;
-  app.listen(port, () => {
-    console.log(`⚙️ Server is running at PORT: ${port}`);
-  });
+app.use("/api/user", userRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
+
+const PORT = Number(process.env.PORT) || 8000;
+
+connectDB()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Server is running in ${process.env.NODE_ENV || "development"} mode`);
+            console.log(`API ready at http://localhost:${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error("Database connection failed:", error);
+        process.exit(1);
+    });
+
+process.on("unhandledRejection", (err: Error) => {
+    console.error("Unhandled Rejection:", err.message);
+    process.exit(1);
 });
