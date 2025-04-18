@@ -2,12 +2,13 @@
   "name": "xunbao-back",
   "private": true,
   "type": "module",
+  "main": "dist/server.js",
   "scripts": {
+    "test": "jest",
+    "bunrun": "bun run src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "ts-node-dev src/server.ts",
-    "test": "jest",
-    "bunrun": "bun run src/server.ts"
+    "dev": "ts-node src/server.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -21,7 +22,9 @@
     "@types/bun": "latest",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
-    "@types/morgan": "^1.9.9"
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.14.1",
+    "ts-node": "^10.9.2"
   },
   "peerDependencies": {
     "typescript": "^5"
