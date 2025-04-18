@@ -78,7 +78,8 @@ export const submitScore = async (req, res) => {
     }
 
     participant.score += scoreToAdd;
-    participant.participated = true; 
+    participant.participated = true;  
+    participant.submissionTime = Date.now;
 
     await participant.save();
 
