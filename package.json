@@ -3,7 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "bun run server.ts"
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node-dev src/server.ts",
+    "test": "jest",
+    "bunrun": "bun run src/server.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
