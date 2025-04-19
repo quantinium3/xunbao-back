@@ -1,0 +1,19 @@
+meta {
+  name: create user
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8000/api/users
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  { "userId": "USR123456", "username": "John Doe", "rollNumber": "CS23B001", "email": "johndoe@example.com", "branch": "CSE", "course": "B.Tech", "phoneNumber": "9876543210", "yog": "2027" }
+}

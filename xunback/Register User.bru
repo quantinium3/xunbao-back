@@ -1,0 +1,27 @@
+meta {
+  name: Register User
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://xunback.manantechnosurge.tech/api/user/register
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "fullName": "Aarav Mehta",
+    "rollNumber": "2023IT115",
+    "email": "aarav.mehta@samplemail.com",
+    "branch": "Information Technology",
+    "course": "B.E.",
+    "phoneNumber": "9123456789",
+    "yog": "2026"
+  }
+}

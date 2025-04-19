@@ -1,0 +1,38 @@
+meta {
+  name: add Questions
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8000/api/question
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  [
+      {
+        "questionId": "Q005",
+        "question": "What is the chemical symbol for water?",
+        "options": ["H2O", "CO2", "O2", "N2"],
+        "correctAnswer": "H2O",
+        "points": 15,
+        "category": "Chemistry",
+        "hasAnswered": false
+      },
+      {
+        "questionId": "Q006",
+        "question": "Who wrote Romeo and Juliet?",
+        "options": ["Shakespeare", "Dickens", "Austen", "Hemingway"],
+        "correctAnswer": "Shakespeare",
+        "points": 12,
+        "category": "Literature",
+        "hasAnswered": false
+      }
+    ]
+}
