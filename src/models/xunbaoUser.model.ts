@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
+import Question from "./question.model";
 
 export interface IXunUser extends Document {
     userId: string;
@@ -19,19 +20,16 @@ interface IXunUserModel extends Model<IXunUser> {
 
 
 export const assignQuestions = async (user: IXunUser): Promise<void> => {
-    const res = await fetch('http://localhost:8000/api/questions/id');
-    if (!res.ok) {
-        console.log("Failed to fetch all questions")
+    const questions = await Question.find({}, 'questionId');
+
+    if (!questions || questions.length === 0) {
+        throw new Error("No questions found in the database");
     }
 
-    const data = await res.json();
-
-    if (!data.data?.questionIds) {
-        throw new Error("Invalid response structure from question IDs API");
-    }
-
-    const questionIds: string[] = data.data.questionIds;
+    const questionIds = questions.map(q => q.questionId);
     const randomizedQuestionIds = questionIds.sort(() => Math.random() - 0.5);
+
+    console.log("Assigned Question IDs:", randomizedQuestionIds);
     user.questions = randomizedQuestionIds;
 };
 
@@ -96,13 +94,6 @@ const xunUserSchema = new Schema<IXunUser>(
         toObject: { virtuals: true },
     }
 );
-
-xunUserSchema.pre("save", async function(next) {
-    if (this.questions.length === 0) {
-        assignQuestions(this);
-    }
-    next();
-});
 
 xunUserSchema.index({ userId: 1, rollNumber: 1, email: 1 });
 

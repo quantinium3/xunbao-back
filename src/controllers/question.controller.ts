@@ -70,26 +70,30 @@ export const getQuestionsByUserId = asyncHandler(async (req, res, next) => {
     }
 
     const user = await XunUser.findOne({ userId });
+
     if (!user) {
         return next(new ApiError(404, 'User not found'));
     }
 
-    const userQuestionIds: string[] = user.questions || [];
+    const userQuestionIds = user.questions;
 
-    const unansweredQuestions = await Question.find({
-        questionId: { $in: userQuestionIds }, // Changed _id to questionId
-        hasAnswered: false
-    }).select('-__v -hasAnswered');
-
-    if (unansweredQuestions.length === 0) {
-        return next(new ApiError(404, 'No unanswered questions found'));
+    if (!userQuestionIds || userQuestionIds.length === 0) {
+        return next(new ApiError(404, 'No assigned questions for this user'));
     }
 
-    res.status(200).json({
+    const questions = await Question.find({
+        questionId: { $in: userQuestionIds }
+    }).select('-__v');
+
+    if (!questions.length) {
+        return next(new ApiError(404, 'No matching questions found'));
+    }
+
+    return res.status(200).json({
         status: 'success',
-        results: unansweredQuestions.length,
+        results: questions.length,
         data: {
-            questions: unansweredQuestions
+            questions
         }
     });
 });
