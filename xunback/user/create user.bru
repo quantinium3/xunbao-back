@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: http://localhost:8000/api/users
+  url: http://localhost:8000/api/user/create
   body: json
   auth: none
 }
@@ -15,5 +15,14 @@ headers {
 }
 
 body:json {
-  { "userId": "USR123456", "username": "John Doe", "rollNumber": "CS23B001", "email": "johndoe@example.com", "branch": "CSE", "course": "B.Tech", "phoneNumber": "9876543210", "yog": "2027" }
+  {
+    "userId": "USR123456",
+    "username": "John Doe",
+    "rollNumber": "CS23B001",
+    "email": "johndoe@example.com",
+    "branch": "CSE",
+    "course": "B.Tech",
+    "phoneNumber": "9876543210",
+    "yog": "2027"
+  }
 }

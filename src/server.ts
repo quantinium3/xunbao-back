@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import connectDB from "./db/db";
 import userRoutes from "./routes/user.routes";
 import questionRoutes from "./routes/question.routes.ts"
+import submittionRoutes from "./routes/submit.routes.ts"
+import leaderboardRoutes from "./routes/leaderboard.routes.ts"
 import helmet from "helmet";
 import morgan from "morgan";
 import { errorHandler, notFound } from "./utils/errorMiddleware";
@@ -31,13 +33,9 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/user", userRoutes);
-app.use(
-    cors({
-        origin: [process.env.FRONTEND_URL!, 'http://localhost:5173'],
-        credentials: true,
-    })
-);
 app.use('/api/question', questionRoutes)
+app.use('/api/submit', submittionRoutes)
+app.use('/api/leaderboard', leaderboardRoutes)
 
 app.use(notFound);
 app.use(errorHandler);

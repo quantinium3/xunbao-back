@@ -10,6 +10,7 @@ export interface IXunUser extends Document {
     course: string;
     phoneNumber: string;
     yog: string;
+    score: number;
     questions: string[];
     createdAt?: Date;
     updatedAt?: Date;
@@ -81,6 +82,10 @@ const xunUserSchema = new Schema<IXunUser>(
                 },
                 message: "Please provide a valid 10-digit phone number",
             },
+        },
+        score: {
+            type: Number,
+            default: 0,
         },
         yog: {
             type: String,
