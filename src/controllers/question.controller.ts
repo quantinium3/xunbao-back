@@ -1,4 +1,5 @@
 import Question from "../models/question.model";
+import { Submit } from "../models/submission.mode";
 import XunUser from "../models/xunbaoUser.model";
 import ApiError from "../utils/apiError";
 import asyncHandler from "../utils/asyncHandler";
@@ -63,37 +64,26 @@ export const getQuestionById = asyncHandler(async (req, res) => {
  * @access public
  */
 export const getQuestionsByUserId = asyncHandler(async (req, res, next) => {
-    const { userId } = req.params;
-
-    if (!userId || typeof userId !== 'string') {
-        return next(new ApiError(400, 'Invalid user ID'));
+    const userId = req.params.userId?.trim();
+    if (!userId) {
+        return next(new ApiError(404, "Invalid user id"))
     }
 
-    const user = await XunUser.findOne({ userId });
+    const answeredQuestionIds = await Submit.find(
+        { userId: userId, isAnswered: true },
+        'questionId'
+    ).then(submissions => submissions.map(sub => sub.questionId));
 
-    if (!user) {
-        return next(new ApiError(404, 'User not found'));
-    }
-
-    const userQuestionIds = user.questions;
-
-    if (!userQuestionIds || userQuestionIds.length === 0) {
-        return next(new ApiError(404, 'No assigned questions for this user'));
-    }
-
-    const questions = await Question.find({
-        questionId: { $in: userQuestionIds }
-    }).select('-__v');
-
-    if (!questions.length) {
-        return next(new ApiError(404, 'No matching questions found'));
-    }
+    const unansweredQuestions = (await Question.find(
+        { questionId: { $nin: answeredQuestionIds } },
+        { correctAnswer: 0 }
+    ).lean()).sort(() => Math.random() - 0.5);
 
     return res.status(200).json({
         status: 'success',
-        results: questions.length,
+        results: unansweredQuestions.length,
         data: {
-            questions
+            unansweredQuestions
         }
     });
 });
