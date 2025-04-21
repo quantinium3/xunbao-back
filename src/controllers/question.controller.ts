@@ -74,10 +74,16 @@ export const getQuestionsByUserId = asyncHandler(async (req, res, next) => {
         'questionId'
     ).then(submissions => submissions.map(sub => sub.questionId));
 
+    const answeredQuestions = answeredQuestionIds.length;
+    const maxQuestions = 20;
+    const remainingQuestions = Math.max(0, maxQuestions - answeredQuestions);
+
     const unansweredQuestions = (await Question.find(
         { questionId: { $nin: answeredQuestionIds } },
         { correctAnswer: 0 }
-    ).lean()).sort(() => Math.random() - 0.5);
+    ).lean())
+        .sort(() => Math.random() - 0.5)
+        .slice(0, remainingQuestions);
 
     return res.status(200).json({
         status: 'success',
