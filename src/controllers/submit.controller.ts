@@ -1,5 +1,5 @@
 import Question from "../models/question.model";
-import { Submit } from "../models/submission.mode";
+import { Submit } from "../models/submission.model";
 import XunUser from "../models/xunbaoUser.model";
 import ApiError from "../utils/apiError";
 
@@ -22,6 +22,14 @@ export const submitAnswer = async (req, res, next) => {
             return next(new ApiError(404, 'Question not found'));
         }
 
+        const existingSubmission = await Submit.findOne({ userId, questionId });
+        if (existingSubmission) {
+            return res.status(200).json({
+                status: "success",
+                message: "Question already answered",
+            })
+        }
+
         if (selectedOption === "Timeout") {
             await Submit.create({
                 userId,
@@ -29,7 +37,7 @@ export const submitAnswer = async (req, res, next) => {
                 submittedAnswer: selectedOption,
                 isCorrect: false,
                 isAnswered: true,
-                pointsScored: 0,
+                points: 0,
             });
 
             return res.status(200).json({
@@ -40,8 +48,16 @@ export const submitAnswer = async (req, res, next) => {
 
         const isAnswerCorrect = selectedOption === question.correctAnswer;
         if (!isAnswerCorrect) {
-            return res.status(400).json({
-                status: 'fail',
+            await Submit.create({
+                userId,
+                questionId,
+                submittedAnswer: selectedOption,
+                isCorrect: false,
+                isAnswered: true,
+                points: 0,
+            })
+            return res.status(200).json({
+                status: 'success',
                 message: 'Incorrect answer',
             });
         }
@@ -56,7 +72,7 @@ export const submitAnswer = async (req, res, next) => {
             submittedAnswer: selectedOption,
             isCorrect: true,
             isAnswered: true,
-            pointsScored: score,
+            points: score,
         });
 
         return res.status(200).json({

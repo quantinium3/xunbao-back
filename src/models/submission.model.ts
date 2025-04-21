@@ -3,13 +3,11 @@ import mongoose from "mongoose";
 const SubmitSchema = new mongoose.Schema(
     {
         userId: {
-            type: mongoose.Schema.ObjectId,
-            ref: "XunUser",
-            required: [true, "UserId is required"],
+            type: String,
+            required: [true, "userid is required"],
         },
         questionId: {
-            type: mongoose.Schema.ObjectId,
-            ref: "Question",
+            type: String,
             required: [true, "Question Id is required"],
         },
         submittedAnswer: {

@@ -1,5 +1,5 @@
 import Question from "../models/question.model";
-import { Submit } from "../models/submission.mode";
+import { Submit } from "../models/submission.model";
 import XunUser from "../models/xunbaoUser.model";
 import ApiError from "../utils/apiError";
 import asyncHandler from "../utils/asyncHandler";

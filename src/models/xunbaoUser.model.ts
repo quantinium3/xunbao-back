@@ -58,12 +58,6 @@ const xunUserSchema = new Schema<IXunUser>(
             unique: true,
             lowercase: true,
             trim: true,
-            validate: {
-                validator: (email: string) => {
-                    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-                },
-                message: "Please provide a valid email address",
-            },
         },
         branch: {
             type: String,
