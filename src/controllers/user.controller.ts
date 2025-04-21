@@ -1,4 +1,4 @@
-import XunUser, { assignQuestions } from '../models/xunbaoUser.model';
+import UserModel, { assignQuestions } from "../models/User.model";
 
 export const createUser = async (req, res) => {
     try {
@@ -13,7 +13,7 @@ export const createUser = async (req, res) => {
             yog
         } = req.body;
 
-        const user = new XunUser({
+        const user = new UserModel({
             userId,
             username,
             rollNumber,
@@ -52,7 +52,7 @@ export const getUserData = async (req, res) => {
             });
         }
 
-        const user = await XunUser.findOne({ userId });
+        const user = await UserModel.findOne({ userId });
 
         if (!user) {
             return res.status(404).json({
@@ -69,7 +69,7 @@ export const getUserData = async (req, res) => {
         console.error('Error fetching user data:', error);
         return res.status(500).json({
             status: 'error',
-            message: error.message || 'Something went wrong while fetching user data.'
+            message: 'Something went wrong while fetching user data.'
         });
     }
 };

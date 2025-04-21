@@ -1,6 +1,6 @@
 import Question from "../models/question.model";
 import { Submit } from "../models/submission.model";
-import XunUser from "../models/xunbaoUser.model";
+import UserModel from "../models/User.model";
 import ApiError from "../utils/apiError";
 
 export const submitAnswer = async (req, res, next) => {
@@ -12,7 +12,7 @@ export const submitAnswer = async (req, res, next) => {
     }
 
     try {
-        const user = await XunUser.findOne({ userId });
+        const user = await UserModel.findOne({ userId });
         if (!user) {
             return next(new ApiError(404, 'User not found'));
         }

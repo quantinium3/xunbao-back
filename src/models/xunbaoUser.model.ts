@@ -76,6 +76,7 @@ const xunUserSchema = new Schema<IXunUser>(
                 },
                 message: "Please provide a valid 10-digit phone number",
             },
+            unique: true,
         },
         score: {
             type: Number,
@@ -99,3 +100,7 @@ xunUserSchema.index({ userId: 1, rollNumber: 1, email: 1 });
 const XunUser: IXunUserModel = mongoose.model<IXunUser, IXunUserModel>("XunUser", xunUserSchema);
 
 export default XunUser;
+
+// 20 question 
+// ui optimization
+//
