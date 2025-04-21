@@ -10,7 +10,7 @@ export const getLeaderBoard = asyncHandler(async (req, res, next) => {
     }
 
     const topUsers = await UserModel.find()
-        .select('userId fullName rollNumber email score')
+        .select('userId username rollNumber email score')
         .sort({ score: -1 })
         .limit(20)
         .lean();
@@ -29,7 +29,7 @@ export const getLeaderBoard = asyncHandler(async (req, res, next) => {
     }));
 
     const allUsers = await UserModel.find()
-        .select('userId fullName rollNumber email score')
+        .select('userId username rollNumber email score')
         .sort({ score: -1 })
         .lean();
 
