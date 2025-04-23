@@ -44,8 +44,7 @@ export const getLeaderBoard = asyncHandler(async (req, res, next) => {
     return res.status(200).json({
         status: 'success',
         results: leaderboard.length,
-        data: {
-            leaderboard, 
+        data: { 
             user: {
                 rank: userRank,
                 userId: userId,
